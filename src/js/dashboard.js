@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import App from './app';
 
 class Dashboard extends React.Component {
 
@@ -26,4 +27,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default ;
+export default Dashboard;

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Dashboard from './dashboard';
 
 class App extends React.Component {
 
@@ -8,16 +9,22 @@ class App extends React.Component {
 
     this.state = {
       isLoaded: false,
-      tweets: {},
-    }
-
+      users: [],
+      tweets: []
+    };
+}
   componentDidMount(){
     $.ajax("https://twitterapii.herokuapp.com/users.json?include=tweets").then(response => {
+      let users = response.data
     });
   }
 
   render () {
+    return (
+      <div className="wrapper">
 
+      </div>
+    )
   }
 }
 
