@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dashboard from './dashboard';
+import $ from 'jquery';
+
+import Homerfeed from './homerfeed';
 
 class App extends React.Component {
+
 
   constructor(props) {
     super(props);
@@ -10,26 +13,29 @@ class App extends React.Component {
     this.state = {
       isLoaded: false,
       users: [],
-      tweets: []
+      hweets: []
     };
 }
   componentDidMount(){
-    $.ajax("https://twitterapii.herokuapp.com/users.json?include=tweets").then(response => {
-      let users = response.data
+    $.ajax("https://twitter-pi.herokuapp.com/users.json?include=tweets").then(response => {
+      this.setState({
+        users: response.data,
+        hweets: response.included
+      });
     });
   }
 
   render () {
     return (
       <div className="wrapper">
-
+        <Homerfeed users={this.state.users} hweets={this.state.hweets}/>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <h1>Hello world!</h1>,
+  <App/>,
   document.getElementById("app")
 );
 
