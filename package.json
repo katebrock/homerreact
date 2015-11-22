@@ -19,6 +19,7 @@
     "gulp": "^3.9.0",
     "gulp-jscs": "^1.6.0",
     "gulp-sass": "^2.0.4",
+    "history": "^1.13.1",
     "isparta": "^3.0.3",
     "istanbulify": "^0.1.0",
     "jasmine": "^2.3.1",
@@ -31,9 +32,11 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-spec-reporter": "0.0.20",
     "moment": "^2.10.6",
+    "neat": "^1.2.2",
     "phantomjs": "^1.9.17",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-router": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
