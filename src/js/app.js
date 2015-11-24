@@ -4,10 +4,10 @@ import $ from './jquery';
 import {Router, Route, Link} from 'react-router';
 
 
-import Homerfeed from './homerfeed';
-import Register from './register';
-import Login from './login';
-import Notfound from './notfound';
+import Homerfeed from './components/homerfeed';
+import Register from './components/register';
+import Login from './components/login';
+import Notfound from './components/notfound';
 
 class App extends React.Component {
 
@@ -23,15 +23,12 @@ class App extends React.Component {
 let routes = (
   <Router>
     <Route path='/' component={App}>
-      <Route path='/homerfeed' component={Homerfeed} swag="yolo">
-      </Route>
-      <Route path='/login' component={Login}>
-      </Route>
-      <Route path='/register' component={Register}>
-      </Route>
+      <Route path='/homerfeed' component={Homerfeed} swag="yolo"/>
+      <Route path='/login' component={Login}/>
+      <Route path='/register' component={Register}/>
+
     </Route>
-    <Route path="*" component={Notfound}>
-    </Route>
+    <Route path="*" component={Notfound}/>
   </Router>
 );
 
