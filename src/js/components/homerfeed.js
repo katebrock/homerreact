@@ -1,7 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 
-import Hweet from './hweet'
+import Hweet from './hweet';
+import User from '../models/user';
 
 class Homerfeed extends React.Component {
   constructor(props) {
@@ -14,14 +15,27 @@ class Homerfeed extends React.Component {
     };
 
     console.log(this.props);
-
+    this.handleHweet = this.handleHweet.bind(this);
 }
   componentDidMount(){
-    $.ajax("https://twitter-pi.herokuapp.com/users.json?include=tweets").then(response => {
+    $.ajax('https://twitter-pi.herokuapp.com/users.json?include=tweets').then(response => {
       this.setState({
         users: response.data,
         hweets: response.included
       });
+    });
+  }
+
+  handleHweet(){
+    let hweet = this.refs.hweet.value;
+    User.hweet({
+      'body': hweet
+    }, (error, data) => {
+      if (!error) {
+        // this.props.history.pushState(null, '/#/login'); // TODO: Fix me
+      } else {
+        alert('we had an error');
+      }
     });
   }
 
@@ -55,9 +69,12 @@ class Homerfeed extends React.Component {
     return (
       <div>
         <h1>Homepage</h1>
-          <ul className="hweetfeed">
+          <ul className='hweetfeed'>
             {hweets}
           </ul>
+          <textarea ref='hweet' rows='100' rows='8' placeholder='Enter dohs and hweets'>
+          </textarea>
+          <input type='submit' onClick={this.handleHweet} value='Hweet it!'/>
       </div>
     )
   }
