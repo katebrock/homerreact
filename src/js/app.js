@@ -1,43 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import $ from './jquery';
+import {Router, Route, Link} from 'react-router';
 
-import Homerfeed from './homerfeed';
+
+import Homerfeed from './components/homerfeed';
+import Register from './components/register';
+import Login from './components/login';
+import Notfound from './components/notfound';
 
 class App extends React.Component {
 
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoaded: false,
-      users: [],
-      hweets: []
-    };
-}
-  componentDidMount(){
-    $.ajax("https://twitter-pi.herokuapp.com/users.json?include=tweets").then(response => {
-      this.setState({
-        users: response.data,
-        hweets: response.included
-      });
-    });
-  }
-
   render () {
     return (
-      <div className="wrapper">
-        <Homerfeed users={this.state.users} hweets={this.state.hweets}/>
-      </div>
-    )
+      <main>
+        {this.props.children}
+      </main>
+    );
   }
 }
 
-ReactDOM.render(
-  <App/>,
-  document.getElementById("app")
+let routes = (
+  <Router>
+    <Route path='/' component={App}>
+      <Route path='/homerfeed' component={Homerfeed} swag="yolo"/>
+      <Route path='/login' component={Login}/>
+      <Route path='/register' component={Register}/>
+
+    </Route>
+    <Route path="*" component={Notfound}/>
+  </Router>
 );
 
+ReactDOM.render(routes, document.getElementById('app'));
 
-export default App;
+export default App.getDohta;
