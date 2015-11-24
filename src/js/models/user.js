@@ -18,7 +18,7 @@ class User {
       url: url,
       method: 'POST',
       data: {
-        users: data
+        'user': data
       }
     };
 
@@ -29,9 +29,33 @@ class User {
     });
   }
 
+  hweet(data, done) {
+    let url = 'https://twitter-pi.herokuapp.com/tweets';
+
+    let options = {
+      url: url,
+      method: 'POST',
+      data: {
+        'tweet': data
+      }
+    };
+
+    $.ajaxSetup({
+      headers: {
+        'Authorization': 'Bearer ' + this.access_token
+      }
+    });
+
+    $.ajax(options).then(response => {
+      done(null, response);
+    }).fail(error => {
+      done(error);
+    });
+  }
+
   login(data, done) {
     let url = 'https://twitter-pi.herokuapp.com/oauth/token';
-    data.grat_type = 'password';
+    data.grant_type = 'password';
     let options = {
       url: url,
       method: 'POST',
@@ -51,6 +75,7 @@ class User {
       done(error);
     });
   }
+
   logout() {
     this.token = null;
   }

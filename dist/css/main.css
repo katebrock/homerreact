@@ -203,7 +203,7 @@ h1 {
     border-style: none;
     border: 1px dashed #F5A2AD;
     margin-bottom: 10px; }
-  .register .passwordconfirm {
+  .register .passwordConfirm {
     display: block;
     width: 237px;
     margin: 0 auto;
@@ -213,7 +213,7 @@ h1 {
     border-style: none;
     border: 1px dashed #F5A2AD;
     margin-bottom: 20px; }
-  .register .registername {
+  .register .registerName {
     width: 221px;
     margin-top: 40px;
     text-decoration: none;

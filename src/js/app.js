@@ -23,12 +23,12 @@ class App extends React.Component {
 let routes = (
   <Router>
     <Route path='/' component={App}>
-      <Route path='/homerfeed' component={Homerfeed} swag="yolo"/>
+      <Route path='/homerfeed' component={Homerfeed} swag='yolo'/>
       <Route path='/login' component={Login}/>
       <Route path='/register' component={Register}/>
 
     </Route>
-    <Route path="*" component={Notfound}/>
+    <Route path='*' component={Notfound}/>
   </Router>
 );
 
